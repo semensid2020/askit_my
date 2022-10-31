@@ -5,9 +5,9 @@
         <%= answer.formatted_created_at %>
       </time></small>
 
-      <p class="mt-2 mb-3">
-        <%= answer.body %>
-      </p>
+      <div class="mt-2 mb-3">
+        <%= sanitize answer.body %>
+      </div>
     </section>
 
     <%= link_to 'Edit', edit_question_answer_path(question, answer), class: 'btn btn-info btn-sm' %>
