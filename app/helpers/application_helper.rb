@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
 
   def nav_tab(title, url, options = {})
     # Удаляет из options, при этом возвращая его и помещая -> в current_page
