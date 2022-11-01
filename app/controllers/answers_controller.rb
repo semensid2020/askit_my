@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-
+  include ActionView::RecordIdentifier
   before_action :set_question!
   before_action :set_answer!, except: :create
 
@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
   def update
     if @answer.update(answer_params)
       flash[:success] = "Answer updated!"
-      redirect_to question_path(@question, anchor: "answer-#{@answer.id}")
+      redirect_to question_path(@question, anchor: dom_id(@answer))
     else
       render :edit
     end
