@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :sessions, only: %i[new create destroy]
+  # resources - когда routes ожидает для некоторых маршрутов присутствие id-шника (видимо, когда сущностей м.б. много)
+  # resource  - если хотим, чтобы идентификаторов никаких не было.
+  resource :session, only: %i[new create destroy]
 
   resources :users, only: %i[new create]
 
