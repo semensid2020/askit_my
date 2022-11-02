@@ -1,6 +1,10 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def pagination(obj)
+    raw(pagy_bootstrap_nav(@pagy)) if obj.pages > 1
+  end
+
   def nav_tab(title, url, options = {})
     # Удаляет из options, при этом возвращая его и помещая -> в current_page
     current_page = options.delete(:current_page)
