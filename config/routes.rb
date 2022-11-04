@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # resource  - если хотим, чтобы идентификаторов никаких не было.
   resource :session, only: %i[new create destroy]
 
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create edit update]
 
   resources :questions do
     # Вложенный маршрут для ответов, т.к. они относятся к вопросу

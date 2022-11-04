@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :require_no_authentication
+  before_action :require_no_authentication, only: %i[new create]
+  before_action :require_authentication, only: %i[edit update]
+  before_action :set_user!
 
   def new
     @user = User.new
@@ -16,9 +18,21 @@ class UsersController < ApplicationController
       render :new
     end
 
+    def edit
+    end
+
+    def update
+
+    end
+
+
   end
 
   private
+
+    def set_user!
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
