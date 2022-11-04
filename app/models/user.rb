@@ -10,9 +10,18 @@ class User < ApplicationRecord
   #  Слово validate требует выполнения указанного метода (кастомная валидация)
   validate :password_presense
   validate :password_complexity
+  validate :correct_old_password, on: :update  # Только при обновлении записи.
 
 
   private
+
+    def correct_old_password
+      # password_digest_was - специальный метод RoR, который вытаскивает именно старый хэширован.пароль
+      # а не новый, который хранится в памяти
+      return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
+
+      errors.add(:old_password, 'is incorrect')
+    end
 
     def password_complexity
       # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
