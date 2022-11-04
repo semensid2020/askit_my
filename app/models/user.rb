@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :old_password
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
   # Ставим false, т.к. все валидации будем прописывать сами.
   has_secure_password validations: false
@@ -10,7 +10,9 @@ class User < ApplicationRecord
   #  Слово validate требует выполнения указанного метода (кастомная валидация)
   validate :password_presense
   validate :password_complexity
-  validate :correct_old_password, on: :update  # Только при обновлении записи.
+
+  # Только при обновлении записи.
+  validate :correct_old_password, on: :update, if: -> { password.present? }
 
 
   private
