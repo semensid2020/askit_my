@@ -17,20 +17,18 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
 
-    def edit
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Your profile was successfully updated!"
+      redirect_to edit_user_path(@user)
+    else
+      render :edit
     end
-
-    def update
-      if @user.update(user_params)
-        flash[:success] = "Your profile was successfully updated!"
-        redirect_to edit_user_path(@user)
-      else
-        render :edit
-      end
-    end
-
-
   end
 
   private
