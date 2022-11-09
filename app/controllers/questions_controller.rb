@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
   def index
     @pagy, @questions = pagy(Question.order(created_at: :desc))
     @questions = @questions.decorate
-    # @questions = Question.order(created_at: :desc).page(params[:page])
   end
 
   def show

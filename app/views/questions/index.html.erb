@@ -5,7 +5,7 @@
 
 <%= link_to 'New question', new_question_path, class: 'btn btn-primary btn-lg mb-3' %>
 
-<%== pagination(@pagy) %>
+<%= pagination(@pagy) %>
 
 <% @questions.each do |question| %>
   <article class="card my-3">
@@ -30,4 +30,4 @@
   </article>
 <% end %>
 
-<%== pagination(@pagy) %>
+<%= pagination(@pagy) %>

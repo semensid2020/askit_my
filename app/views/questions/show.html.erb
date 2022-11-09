@@ -26,8 +26,8 @@
 
 <h2 class="mt-5 mb-3">Answers</h2>
 
-<%== pagination(@pagy) %>
+<%= pagination(@pagy) %>
 
 <%= render partial: 'answers/answer', collection: @answers, as: :answer, locals: {question: @question} %>
 
-<%== pagination(@pagy) %>
+<%= pagination(@pagy) %>

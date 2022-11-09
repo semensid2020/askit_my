@@ -15,8 +15,10 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome back, #{current_user.name_or_email}!"
       redirect_to root_path
     else
-      flash[:warning] = "Incorrect email and/or password!"
-      redirect_to new_session_path
+      #  TODO разобрать
+      #  Почему flash.now требует render :new?
+      flash.now[:warning] = "Incorrect email and/or password!"
+      render :new
     end
   end
 
