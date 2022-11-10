@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :old_password
+  attr_accessor :old_password, :remember_token
 
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
@@ -14,8 +14,26 @@ class User < ApplicationRecord
   # Только при обновлении записи.
   validate :correct_old_password, on: :update, if: -> { password.present? }
 
+  def remember_me
+    # Генерируем токен
+    self.remember_token = SecureRandom.urlsafe_base64
+    # Кладем в таблицу Users дайджест токена (хэшированного токена)
+    update_column :remember_token_digest, digest(remember_token)
+  end
+
+  def remember_token_authenticated?(remember_token)
+    BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
+  end
 
   private
+
+    # Заимствовано из has_secure_password.
+    # Создается хэш с определенной сложностью (cost):
+    def digest(string)
+      cost = ActiveModel::SecurePassword.
+        min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
 
     def correct_old_password
       # password_digest_was - специальный метод RoR, который вытаскивает именно старый хэширован.пароль
