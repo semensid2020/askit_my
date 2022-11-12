@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     # user& - если user -> nil, то сразу переходим в else.
     if user&.authenticate(params[:password])
       sign_in(user)
+      remember(user) if params[:remember_me] == '1'
       flash[:success] = "Welcome back, #{current_user.name_or_email}!"
       redirect_to root_path
     else
