@@ -9,6 +9,8 @@ module Authentication
         if session[:user_id].present?
           @current_user ||= User.find_by(id: session[:user_id]).decorate
         # Если в сессии ничего нет, то мы смотрим, а не запоминали ли мы этого юзера раньше?
+        # TODO разобраться почему у меня никогда не удаляются данные о сессии после перезапуска браузера
+        # таким образом, я никогда не попадаю в elsif
         elsif cookies.encrypted[:user_id].present?
           user = User.find_by(id: cookies.encrypted[:user_id])
           # Дальше нам надо проверить, соответствует ли токен из куки токену в БД
@@ -49,7 +51,15 @@ module Authentication
         cookies.encrypted.permanent[:user_id] = user.id
       end
 
+      def forget(user)
+        user.forget_me
+        # Удаляем из кукис данные о юзере, т.к. в БД у нас больше никаких токенов нету
+        cookies.delete(:user_id)
+        cookies.delete(:remember_token)
+      end
+
       def sign_out
+        forget(current_user)
         session.delete(:user_id)
         @current_user = nil
       end
