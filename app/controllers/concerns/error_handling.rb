@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Note:
+# Заметка:
 # Всякие rescue_from лучше убирать в отдельные модули, которые в RoR называются concerns
 
 module ErrorHandling
@@ -13,7 +13,7 @@ module ErrorHandling
     private
 
     def notfound(exception)
-      # Note:
+      # Заметка:
       # Записывает возникшую ошибку в журнал ошибок Rails:
       logger.warn(exception)
 
