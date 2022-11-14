@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserDecorator < ApplicationDecorator
   # Делегирует неизвестные методы объекту, который мы "декорируем"
   delegate_all

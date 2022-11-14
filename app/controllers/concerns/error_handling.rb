@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Note:
 # Всякие rescue_from лучше убирать в отдельные модули, которые в RoR называются concerns
 
