@@ -8,20 +8,26 @@ module Authentication
     private
 
     def current_user
-      if session[:user_id].present?
-        @current_user ||= User.find_by(id: session[:user_id]).decorate
-      # Если в сессии ничего нет, то мы смотрим, а не запоминали ли мы этого юзера раньше?
+      user = session[:user_id].present? ? user_from_session : user_from_token
+      # Если в сессии ничего нет, то мы смотрим, а не запоминали ли мы этого юзера раньше (есть кука)?
       # TODO разобраться почему у меня никогда не удаляются данные о сессии после перезапуска браузера
-      # таким образом, я никогда не попадаю в elsif
-      elsif cookies.encrypted[:user_id].present?
-        user = User.find_by(id: cookies.encrypted[:user_id])
-        # Дальше нам надо проверить, соответствует ли токен из куки токену в БД
-        if user&.remember_token_authenticated?(cookies.encrypted[:remember_token])
-          # Установим в сессию эту штуку, чтобы потом последующие проверки выполнялись быстрее:
-          sign_in(user)
-          @current_user ||= user.decorate
-        end
-      end
+      # таким образом, я никогда не доходим до user_from_token
+      @current_user ||= user&.decorate  # Проверяем что юзер не nil !
+    end
+
+    def user_from_session
+      User.find_by(id: session[:user_id])
+    end
+
+    def user_from_token
+      user = User.find_by(id: cookies.encrypted[:user_id])
+      token = cookies.encrypted[:remember_token]
+      # Дальше нам надо проверить, соответствует ли токен из куки токену в БД
+      return unless user&.remember_token_authenticated?(token)
+
+      # Установим в сессию эту штуку, чтобы потом последующие проверки выполнялись быстрее:
+      sign_in(user)
+      user
     end
 
     def user_signed_in?

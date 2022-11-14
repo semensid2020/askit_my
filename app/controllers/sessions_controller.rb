@@ -11,10 +11,7 @@ class SessionsController < ApplicationController
     #  TODO разобрать
     # user& - если user -> nil, то сразу переходим в else.
     if user&.authenticate(params[:password])
-      sign_in(user)
-      remember(user) if params[:remember_me] == '1'
-      flash[:success] = "Welcome back, #{current_user.name_or_email}!"
-      redirect_to root_path
+      do_sign_in(user)
     else
       #  TODO разобрать
       #  Почему flash.now требует render :new?
@@ -26,6 +23,15 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     flash[:success] = 'See you later!'
+    redirect_to root_path
+  end
+
+  private
+
+  def do_sign_in(user)
+    sign_in(user)
+    remember(user) if params[:remember_me] == '1'
+    flash[:success] = "Welcome back, #{current_user.name_or_email}!"
     redirect_to root_path
   end
 end
