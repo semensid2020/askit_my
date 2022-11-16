@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
@@ -30,6 +30,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'draper', '~> 4.0'
 gem 'pagy', '~> 4.10'
 gem 'valid_email2', '~> 4.0'
+
+# Для работы с файлами: ZIP-архивами и XLSX
+gem 'caxlsx', '~> 3.1'
+gem 'caxlsx_rails', '~> 0.6'
+gem 'rubyzip', '~> 2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
