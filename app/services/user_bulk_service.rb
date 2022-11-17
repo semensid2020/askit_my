@@ -12,8 +12,9 @@ class UserBulkService < ApplicationService
   def call
     Zip::File.open(@archive) do |zip_file|
       zip_file.each do |entry|
-        u = users_from(entry)
-        binding.pry  # Гем: pry-rails
+        # Сделаем с помощью метода из гема activerecord-import:
+        # ignore true - записи не будут импортированы, если для них не проходят валидации
+        User.import(users_from(entry), ignore: true)
       end
     end
   end

@@ -32,10 +32,11 @@ gem 'pagy', '~> 4.10'
 gem 'valid_email2', '~> 4.0'
 
 # Для работы с файлами: ZIP-архивами и XLSX
+gem 'activerecord-import', '~> 1.2'
 gem 'caxlsx', '~> 3.1'
 gem 'caxlsx_rails', '~> 0.6'
-gem 'rubyzip', '~> 2'
 gem 'rubyXL', '~> 3.4'
+gem 'rubyzip', '~> 2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
