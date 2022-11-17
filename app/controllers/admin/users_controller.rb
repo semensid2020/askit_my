@@ -13,6 +13,16 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def create
+    # Открываем Zip-архив, вытаскиваем из него файлы и обрабатываем их (создаем юзеров)
+    if params[:archive].present?
+      UserBulkService.call(params[:archive])
+      flash[:success] = 'Users imported!'
+    end
+
+    redirect_to admin_users_path
+  end
+
   private
 
   def respond_with_zipped_users

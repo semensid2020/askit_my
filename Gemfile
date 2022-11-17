@@ -35,6 +35,7 @@ gem 'valid_email2', '~> 4.0'
 gem 'caxlsx', '~> 3.1'
 gem 'caxlsx_rails', '~> 0.6'
 gem 'rubyzip', '~> 2'
+gem 'rubyXL', '~> 3.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
