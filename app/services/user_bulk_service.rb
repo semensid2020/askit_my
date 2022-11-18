@@ -15,7 +15,7 @@ class UserBulkService < ApplicationService
   # Тот самый метод call, который и будет выполнять всю основную работу
   def call
     Zip::File.open(@archive) do |zip_file|
-      zip_file.each do |entry|
+      zip_file.glob('*.xlsx').each do |entry|
         # Сделаем с помощью метода из гема activerecord-import:
         # ignore true - записи не будут импортированы, если для них не проходят валидации
         User.import(users_from(entry), ignore: true)
