@@ -1,6 +1,17 @@
 en:
+  activerecord:
+    models:
+      question: 'Question'
+      answer: 'Answer'
+    attributes:
+      question:
+        title: 'Title'
+        body:  'Body'
   pages:
     index:
       title: 'Welcome to AskIt!'
   menu:
     home: 'Home'
+  questions:
+    destroy:
+      success: 'Question deleted!'

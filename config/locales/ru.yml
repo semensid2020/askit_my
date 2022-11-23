@@ -1,6 +1,17 @@
 ru:
+  activerecord:
+    models:
+      question: 'Вопрос'
+      answer: 'Ответ'
+    attributes:
+      question:
+        title: 'Заголовок'
+        body:  'Текст'
   pages:
     index:
       title: 'Добро пожаловать в AskIt!'
   menu:
     home: 'Главная'
+  questions:
+    destroy:
+      success: 'Вопрос удален!'
