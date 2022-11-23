@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'draper', '~> 4.0'
 gem 'pagy', '~> 4.10'
+gem 'rails-i18n', '~> 6'
 gem 'valid_email2', '~> 4.0'
 
 # Для работы с файлами: ZIP-архивами и XLSX
