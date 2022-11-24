@@ -23,4 +23,10 @@ class ApplicationController < ActionController::Base
     nil
   end
 
+  # Встроенный в RoR метод, который мы переопределим
+  # по дефолту в параметрах запроса передается текущая локаль, если не указано иное 
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
 end

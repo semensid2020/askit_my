@@ -1,4 +1,6 @@
 ru:
+  en: Английский
+  ru: Русский
   activerecord:
     models:
       question: 'Вопрос'
