@@ -18,7 +18,7 @@ module Admin
       # Открываем Zip-архив, вытаскиваем из него файлы и обрабатываем их (создаем юзеров)
       if params[:archive].present?
         UserBulkService.call(params[:archive])
-        flash[:success] = 'Users imported!'
+        flash[:success] = t('.success')
       end
 
       redirect_to admin_users_path
