@@ -41,6 +41,7 @@ gem 'rubyXL', '~> 3.4'
 gem 'rubyzip', '~> 2'
 
 # Для работы с переводами
+gem 'i18n-tasks', '~> 0.9.34'
 gem 'lokalise_rails', '~> 2'
 
 # Reduces boot times through caching; required in config/boot.rb
