@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # Например: localhost/en/questions, при этом локаль НЕобязательна в УРЛе
-  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     # resources - когда routes ожидает для некоторых маршрутов присутствие id-шника (видимо, когда сущностей м.б. много)
     # resource  - если хотим, чтобы идентификаторов никаких не было.
     resource :session, only: %i[new create destroy]
@@ -19,7 +19,5 @@ Rails.application.routes.draw do
     end
 
     root 'pages#index'
-
-  end #scope
-
+  end
 end
