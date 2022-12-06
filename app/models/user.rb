@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
 
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
   # Ставим false, т.к. все валидации будем прописывать сами.
