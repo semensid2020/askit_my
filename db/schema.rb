@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_06_141107) do
+ActiveRecord::Schema.define(version: 2022_12_08_152905) do
 
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_12_06_141107) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_token_digest"
+    t.string "gravatar_hash"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

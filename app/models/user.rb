@@ -19,6 +19,8 @@ class User < ApplicationRecord
   # Только при обновлении записи.
   validate :correct_old_password, on: :update, if: -> { password.present? }
 
+  before_save :set_gravatar_hash, if: :email_changed?
+
   def remember_me
     # Генерируем токен
     self.remember_token = SecureRandom.urlsafe_base64
@@ -82,4 +84,14 @@ class User < ApplicationRecord
   def password_presense
     errors.add(:password, :blank) if password_digest.blank?
   end
+
+  def set_gravatar_hash
+    return unless email.present?
+
+    hash = Digest::MD5.hexdigest(email.strip.downcase)
+    self.gravatar_hash = hash
+    # Здесь выполнять .save не нужно, т.к. этот метод будет before_save-коллбэком, т.е. и так будет выполнен
+    # непосредственно перед сохранением записи в БД
+  end
+
 end
