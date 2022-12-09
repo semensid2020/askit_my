@@ -1,4 +1,7 @@
-<%= tag.div do %>
+<%= link_to t('questions.show.comments'), "##{html_id}",
+  class: 'btn btn-primary', data: {'bs-toggle': 'collapse'} %>
+
+<%= tag.div class: 'collapse', id: html_id do %>
   <%= form_with model: [commentable, (@comment || commentable.comments.build)],
   class: 'pt-3 border-top my-2' do |f| %>
     <%= render 'shared/errors', object: @comment %>
