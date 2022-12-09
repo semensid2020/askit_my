@@ -12,7 +12,17 @@ Rails.application.routes.draw do
     resources :questions do
       # Вложенный маршрут для ответов, т.к. они относятся к вопросу
       resources :answers, except: %i[new show]
+
+      resources :comments, only: %i[create destroy]
     end
+
+    # Комменты к ответам пришлось выделить отдельно, чтобы более-менее удобный и не сильно длинный маршрут к ним был.
+    # (поэтому вот такой дубль стр.14 появился ниже:)
+    resources :answers, except: %i[new show] do
+      resources :comments, only: %i[create destroy]
+    end
+
+
 
     namespace :admin do
       resources :users, only: %i[index create]
