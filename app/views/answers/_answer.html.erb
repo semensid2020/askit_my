@@ -26,4 +26,5 @@
   </div>
 <% end %>
 
-<%= render 'comments/commentable', commentable: answer, comment: @comment %>
+<%= render 'comments/commentable', commentable: answer, comment: @comment,
+  html_id: dom_id(answer, 'comment_form') %>

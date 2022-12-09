@@ -16,7 +16,8 @@
   <%= @question.user.name_or_email %>
 </div>
 
-<%= render 'comments/commentable', commentable: @question, comment: @comment %>
+<%= render 'comments/commentable', commentable: @question, comment: @comment,
+  html_id: 'questionComments' %>
 
 <div class="border-top border-bottom py-3">
   <div class="btn-group">
