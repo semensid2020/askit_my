@@ -66,7 +66,6 @@ module Internationalization
     def default_url_options
       { locale: I18n.locale }
     end
-
   end
   # rubocop:enable Metrics/BlockLength
 end

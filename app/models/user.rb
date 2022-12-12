@@ -86,12 +86,11 @@ class User < ApplicationRecord
   end
 
   def set_gravatar_hash
-    return unless email.present?
+    return if email.blank?
 
     hash = Digest::MD5.hexdigest(email.strip.downcase)
     self.gravatar_hash = hash
     # Здесь выполнять .save не нужно, т.к. этот метод будет before_save-коллбэком, т.е. и так будет выполнен
     # непосредственно перед сохранением записи в БД
   end
-
 end

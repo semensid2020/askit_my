@@ -22,8 +22,6 @@ Rails.application.routes.draw do
       resources :comments, only: %i[create destroy]
     end
 
-
-
     namespace :admin do
       resources :users, only: %i[index create]
     end
