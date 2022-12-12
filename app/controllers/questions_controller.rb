@@ -5,7 +5,8 @@ class QuestionsController < ApplicationController
   before_action :set_question!, only: %i[show destroy edit update]
 
   def index
-    @pagy, @questions = pagy(Question.order(created_at: :desc))
+    # Загружаем не только все вопросы, но и для каждого вопроса сразу подгрузить юзеров. Иначе n+1
+    @pagy, @questions = pagy(Question.includes(:user).order(created_at: :desc))
     @questions = @questions.decorate
   end
 
