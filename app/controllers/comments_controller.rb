@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   include QuestionsAnswers
   before_action :set_commentable!
@@ -16,6 +18,13 @@ class CommentsController < ApplicationController
       @comment = @comment.decorate
       load_question_answers(do_render: true)
     end
+  end
+
+  def destroy
+    comment = @commentable.comments.find params[:id]
+    comment.destroy
+    flash[:success] = t '.success'
+    redirect_to question_path(@question)
   end
 
   private

@@ -34,6 +34,8 @@ en:
   comments:
     create:
       success: Comment created!
+    destroy:
+      success: Comment deleted!
   answers:
     create:
       success: Answer created!
