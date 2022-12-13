@@ -8,7 +8,7 @@
     (is_current_comment ? comment : commentable.comments.build)],
   class: 'pt-3 border-top my-2' do |f| %>
     <% if is_current_comment %>
-      <%= render 'shared/errors', object: @comment %>
+      <%= render 'shared/errors', object: comment %>
     <% end %>
 
     <div class="mb-3 row">

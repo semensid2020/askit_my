@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = @commentable.comments.find params[:id]
+    comment = @commentable.comments.find(params[:id])
     comment.destroy
-    flash[:success] = t '.success'
+    flash[:success] = t('.success')
     redirect_to question_path(@question)
   end
 
