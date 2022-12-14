@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 
   def index
     # Загружаем не только все вопросы, но и для каждого вопроса сразу подгрузить юзеров. Иначе n+1
-    @pagy, @questions = pagy(Question.includes(:user, :question_tags, :tags).order(created_at: :desc))
+    @pagy, @questions = pagy(Question.all_by_tags(params[:tag_ids]))
     @questions = @questions.decorate
   end
 
