@@ -3,6 +3,7 @@
 class QuestionsController < ApplicationController
   include QuestionsAnswers
   before_action :set_question!, only: %i[show destroy edit update]
+  before_action :fetch_tags, only: %i[new edit]
 
   def index
     # Загружаем не только все вопросы, но и для каждого вопроса сразу подгрузить юзеров. Иначе n+1
@@ -49,10 +50,14 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, tag_ids: [])
   end
 
   def set_question!
     @question = Question.find(params[:id])
+  end
+
+  def fetch_tags
+    @tags = Tag.all
   end
 end
