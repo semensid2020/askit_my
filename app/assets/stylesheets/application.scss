@@ -1,4 +1,6 @@
 @import 'bootstrap';
+@import "select2/src/scss/core";
+@import "select2-bootstrap-5-theme/src/include-all";
 
 .field_with_errors {
   .form-control {
