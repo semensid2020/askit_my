@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
     # Загружаем не только все вопросы, но и для каждого вопроса сразу подгрузить юзеров. Иначе n+1
     @pagy, @questions = pagy(Question.all_by_tags(params[:tag_ids]))
     @questions = @questions.decorate
+    @tags = Tag.all
   end
 
   def show
