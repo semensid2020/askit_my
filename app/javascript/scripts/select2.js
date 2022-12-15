@@ -9,6 +9,12 @@ const select2_langs = {
   en: Select2En
 }
 
+$(document).on("turbolinks:before-cache", function() {
+  $('.js-multiple-select').each(function () {
+    $(this).select2('destroy');
+  })
+})
+
 $(document).on("turbolinks:load", function() {
   $('.js-multiple-select').each(function () {
     const $this = $(this)
