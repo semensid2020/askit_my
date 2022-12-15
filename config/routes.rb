@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy]
   end
 
+  namespace :api do
+    resources :tags, only: :index
+  end
+
   # Например: localhost/en/questions, при этом локаль НЕобязательна в УРЛе
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     # resources - когда routes ожидает для некоторых маршрутов присутствие id-шника (видимо, когда сущностей м.б. много)
