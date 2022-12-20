@@ -17,8 +17,8 @@ gem 'puma', '~> 5.0'
 gem 'webpacker', '6.0.0.rc.5'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+# Simple to-JSON-serializer. Read more: https://github.com/procore/blueprinter
+gem 'blueprinter'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

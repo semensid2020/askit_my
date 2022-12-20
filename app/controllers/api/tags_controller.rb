@@ -7,9 +7,7 @@ module Api
       @tags = Tag.where(tags[:title].matches("%#{params[:term]}%"))
 
       # Метод index отвечает только в формате JSON!
-      respond_to do |format|
-        format.json
-      end
+      render json: TagBlueprint.render(@tags)
     end
   end
 end
