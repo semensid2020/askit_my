@@ -25,6 +25,8 @@ ru:
       question: Вопрос
   admin:
     users:
+      edit:
+        title: Редактирование пользователя
       destroy:
         success: Пользователь удалён!
       update:

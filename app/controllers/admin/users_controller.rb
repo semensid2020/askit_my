@@ -3,7 +3,7 @@
 module Admin
   class UsersController < ApplicationController
     before_action :require_authentication
-    before_action :set_user, only: %i[edit update destroy]
+    before_action :set_user!, only: %i[edit update destroy]
 
     def index
       respond_to do |format|

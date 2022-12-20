@@ -25,6 +25,8 @@ en:
       question: Question
   admin:
     users:
+      edit:
+        title: Edit user
       destroy:
         success: User deleted!
       update:
