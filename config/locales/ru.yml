@@ -20,10 +20,13 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
         updated_at: Обновлён
+        role: Роль
     models:
       question: Вопрос
   admin:
     users:
+      update:
+        success: Пользователь обновлён!
       create:
         success: Пользователи загружены!
       index:

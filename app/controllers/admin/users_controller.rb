@@ -3,6 +3,7 @@
 module Admin
   class UsersController < ApplicationController
     before_action :require_authentication
+    before_action :set_user, only: %i[edit update]
 
     def index
       respond_to do |format|
@@ -22,6 +23,18 @@ module Admin
       end
 
       redirect_to admin_users_path
+    end
+
+    def edit
+    end
+
+    def update
+      if @user.update(user_params)
+        flash[:success] = t('.success')
+        redirect_to admin_users_path
+      else
+        render :edit
+      end
     end
 
     private
@@ -47,5 +60,14 @@ module Admin
       compressed_filestream.rewind
       send_data(compressed_filestream.read, filename: 'users.zip')
     end
+
+    def set_user!
+      @user = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :name, :password, :password_confirmation)
+    end
+
   end
 end
