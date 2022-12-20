@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
+  validates :role, presence: true
 
   # Ставим false, т.к. все валидации будем прописывать сами.
   has_secure_password validations: false
