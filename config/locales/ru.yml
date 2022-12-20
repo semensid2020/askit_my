@@ -25,6 +25,8 @@ ru:
       question: Вопрос
   admin:
     users:
+      destroy:
+        success: Пользователь удалён!
       update:
         success: Пользователь обновлён!
       create:

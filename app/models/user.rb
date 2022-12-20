@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   enum role: { basic: 0, moderator: 1, admin: 2 }, _suffix: :role
-  attr_accessor :old_password, :remember_token
+  attr_accessor :old_password, :remember_token, :admin_edit
 
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validate :password_complexity
 
   # Только при обновлении записи.
-  validate :correct_old_password, on: :update, if: -> { password.present? }
+  validate :correct_old_password, on: :update, if: -> { password.present? && !admin_edit }
 
   before_save :set_gravatar_hash, if: :email_changed?
 

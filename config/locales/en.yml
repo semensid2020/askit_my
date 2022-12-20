@@ -25,8 +25,10 @@ en:
       question: Question
   admin:
     users:
+      destroy:
+        success: User deleted!
       update:
-        success: Users updated!
+        success: User updated!
       create:
         success: Users imported!
       index:
