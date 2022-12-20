@@ -56,6 +56,11 @@ en:
       success: Answer updated!
   en: English
   global:
+    user:
+      roles:
+        basic: Basic
+        moderator: Moderator
+        admin: Admin
     button:
       delete: Delete
       edit: Edit

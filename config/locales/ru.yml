@@ -56,6 +56,11 @@ ru:
       success: Ответ обновлён!
   en: Английский
   global:
+    user:
+      roles:
+        basic: Базовый
+        moderator: Модератор
+        admin: Админ
     button:
       delete: Удалить
       edit: Изменить
