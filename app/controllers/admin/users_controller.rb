@@ -25,8 +25,7 @@ module Admin
       redirect_to admin_users_path
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
       if @user.update(user_params)
@@ -76,6 +75,5 @@ module Admin
         :email, :name, :password, :password_confirmation, :role
       ).merge(admin_edit: true)
     end
-
   end
 end
