@@ -18,7 +18,7 @@ gem 'webpacker', '6.0.0.rc.5'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # Simple to-JSON-serializer. Read more: https://github.com/procore/blueprinter
-gem 'blueprinter'
+gem 'blueprinter', '~> 0.25'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -28,7 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'draper', '~> 4.0'
-gem 'pagy', '~> 4.10'
+gem 'pagy', '~> 5.0'
 gem 'rails-i18n', '~> 6'
 gem 'valid_email2', '~> 4.0'
 
@@ -42,7 +42,10 @@ gem 'rubyzip', '~> 2'
 
 # Для работы с переводами
 gem 'i18n-tasks', '~> 0.9.34'
-gem 'lokalise_rails', '~> 2'
+gem 'lokalise_rails', '~> 3'
+
+# Other
+gem 'pundit', '~> 2.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
