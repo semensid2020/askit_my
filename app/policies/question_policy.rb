@@ -11,7 +11,7 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def destroy?
-
+    user.admin_role? || user.author?(record)
   end
 
   def index?
