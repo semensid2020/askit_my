@@ -23,6 +23,12 @@ class User < ApplicationRecord
 
   before_save :set_gravatar_hash, if: :email_changed?
 
+  # Юзер является автором вопроса, ответа, комментария?..
+  def author?(obj)
+    # Автор объекта == Я (user) ?
+    obj.user == self
+  end
+
   def remember_me
     # Генерируем токен
     self.remember_token = SecureRandom.urlsafe_base64
