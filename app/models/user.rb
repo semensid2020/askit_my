@@ -29,6 +29,10 @@ class User < ApplicationRecord
     obj.user == self
   end
 
+  def guest?
+    false
+  end
+
   def remember_me
     # Генерируем токен
     self.remember_token = SecureRandom.urlsafe_base64

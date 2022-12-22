@@ -4,7 +4,8 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+    # Если пользователь в систему не вошел, то создаем Гостевого Юзера
+    @user = user || GuestUser.new
     @record = record
   end
 
