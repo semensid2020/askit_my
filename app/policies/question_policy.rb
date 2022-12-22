@@ -3,7 +3,7 @@
 class QuestionPolicy < ApplicationPolicy
 
   def create?
-    user.present?
+    !user.guest?
   end
 
   def update?
