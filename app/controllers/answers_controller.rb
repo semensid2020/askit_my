@@ -5,6 +5,8 @@ class AnswersController < ApplicationController
   include ActionView::RecordIdentifier
   before_action :set_question!
   before_action :set_answer!, except: :create
+  before_action :authorize_answer!
+  after_action :verify_authorized
 
   def edit; end
 
@@ -50,5 +52,11 @@ class AnswersController < ApplicationController
 
   def set_answer!
     @answer = @question.answers.find(params[:id])
+  end
+
+  def authorize_answer!
+    # На случай если ответа нет вовсе передаем тупо модель:
+    authorize(@answer || Answer)
+    # Сам же метод authorize - доступен из Pundit
   end
 end
