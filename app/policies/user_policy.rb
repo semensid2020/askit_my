@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UserPolicy < ApplicationPolicy
-
   def create?
     # Создать пользователя = зарегистрироваться. Это могут только гости.
     user.guest?

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class QuestionPolicy < ApplicationPolicy
-
   def create?
     !user.guest?
   end
@@ -21,6 +20,4 @@ class QuestionPolicy < ApplicationPolicy
   def show?
     true
   end
-
-
 end

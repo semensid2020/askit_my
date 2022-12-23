@@ -81,6 +81,5 @@ module Admin
     def authorize_user!
       authorize(@user || User)
     end
-
   end
 end

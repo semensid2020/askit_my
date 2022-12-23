@@ -2,7 +2,6 @@
 
 module Admin
   class UserPolicy < ApplicationPolicy
-
     def create?
       user.admin_role?
     end
@@ -22,6 +21,5 @@ module Admin
     def destroy?
       user.admin_role?
     end
-
   end
 end
