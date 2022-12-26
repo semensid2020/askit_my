@@ -105,6 +105,9 @@ en:
     update:
       success: Question updated!
   ru: Russian
+  password_reset_mailer:
+    reset_email:
+      subject: 'Сброс пароля | AskIt'
   password_resets:
     new:
       title: Reset password
