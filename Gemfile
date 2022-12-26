@@ -14,7 +14,7 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '6.0.0.rc.5'
+gem 'webpacker', '6.0.0.rc.6'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # Simple to-JSON-serializer. Read more: https://github.com/procore/blueprinter
