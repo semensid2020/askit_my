@@ -109,6 +109,8 @@ en:
     reset_email:
       subject: 'Сброс пароля | AskIt'
   password_resets:
+    create:
+      success: Password reset instructions were sent to your email address.
     new:
       title: Reset password
       form:
