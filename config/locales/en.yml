@@ -114,6 +114,8 @@ en:
       title: Enter new password
       form:
         submit: Reset my password!
+    update:
+      success: Your password was reset!
     create:
       success: Password reset instructions were sent to your email address.
     new:
