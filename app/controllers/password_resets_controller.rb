@@ -4,6 +4,7 @@ class PasswordResetsController < ApplicationController
   # Проверяем что юзер не вошел на сайт, т.к. вошедшему юзеру нет смысла давать сбрасывать пароль данным способом
   # он его можно просто поменять в настройках УЗ
   before_action :require_no_authentication
+  before_action :set_user, only: %i[edit update]
 
   def create
     @user = User.find_by(email: params[:email])
@@ -19,5 +20,20 @@ class PasswordResetsController < ApplicationController
 
     flash[:success] =t('.success')
     redirect_to new_session_path
+  end
+
+  def edit;end
+
+  private
+
+  def set_user
+    redirect_to(new_session_path, flash: { warning: t('password_resets.fail') }) and return unless params[:user].present?
+
+    @user = User.find_by email: params[:user][:email],
+                         password_reset_token: params[:user][:password_reset_token]
+
+    # Не стоит делать так, чтобы этот токен имел неограниченный срок действия.
+    # Поэтому делает редирект, если не получилось вообще найти пользователя, или истек срок жизни токена
+    redirect_to(new_session_path, flash: { warning: t('password_resets.fail') }) unless @user&.password_reset_period_valid?
   end
 end
