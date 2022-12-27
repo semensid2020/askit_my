@@ -107,7 +107,7 @@ en:
   ru: Russian
   password_reset_mailer:
     reset_email:
-      subject: 'Сброс пароля | AskIt'
+      subject: 'Password reset | AskIt'
   password_resets:
     fail: Could not reset your password...
     edit:
