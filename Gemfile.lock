@@ -146,6 +146,10 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
     json (2.6.3)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     lokalise_manager (1.2.1)
       ruby-lokalise-api (~> 4.0)
       rubyzip (~> 2.3)
@@ -309,6 +313,7 @@ DEPENDENCIES
   draper (~> 4.0)
   faker (~> 2)
   i18n-tasks (~> 0.9.34)
+  letter_opener
   lokalise_rails (~> 3)
   pagy (~> 5.0)
   pry-rails
