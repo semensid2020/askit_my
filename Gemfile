@@ -46,6 +46,7 @@ gem 'lokalise_rails', '~> 3'
 
 # Other
 gem 'pundit', '~> 2.1'
+gem 'sidekiq', '~> 6'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
