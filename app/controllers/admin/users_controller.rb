@@ -20,7 +20,9 @@ module Admin
     def create
       # Открываем Zip-архив, вытаскиваем из него файлы и обрабатываем их (создаем юзеров)
       if params[:archive].present?
-        UserBulkService.call(params[:archive])
+        # Ставим задачу с этой джобой в очередь (perform_later):
+        # Ниже current_user - тот, кто инициирует джобу. В дальнейшем будем получать email
+        UserBulkImportJob.perform_later(create_blob, current_user)
         flash.now[:success] = t('.success')
       end
 
@@ -45,6 +47,15 @@ module Admin
     end
 
     private
+
+    def create_blob
+      file = File.open(params[:archive])
+      result = ActiveStorage::Blob.create_and_upload!(io: file,
+                                                      filename: params[:archive].original_filename)
+      file.close
+      # key - уникальный id загруженного в ActiveStorage файла, хранится в одной из таблиц
+      result.key
+    end
 
     # rubocop:disable Metrics/MethodLength
     def respond_with_zipped_users
