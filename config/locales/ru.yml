@@ -29,6 +29,8 @@ ru:
         subject: Импорт пользователей завершён | AskIt
       bulk_import_fail:
         subject: Импорт пользователей не удался | AskIt
+      bulk_export_done:
+        subject: Экспорт пользователей завершён | AskIt
     users:
       edit:
         title: Редактирование пользователя
@@ -37,8 +39,9 @@ ru:
       update:
         success: Пользователь обновлён!
       create:
-        success: Пользователи загружены!
+        success: Вы получите письмо, когда операция завершится
       index:
+        success: Вы получите письмо, когда операция завершится
         download_zipped: Загрузить архив с XLSX
         title: Управление пользователями
         upload_form:
@@ -60,6 +63,22 @@ ru:
     update:
       success: Ответ обновлён!
   en: Английский
+  password_resets:
+    fail: Не удалось сбросить ваш пароль...
+    edit:
+      title: Выберите новый пароль
+      form:
+        submit: Сбросить пароль!
+    update:
+      success: Ваш пароль был сброшен!
+    create:
+      success: Инструкции были отправлены на ваш адрес.
+    new:
+      title: Сбросить пароль
+      form:
+        email: Email
+        submit: Отправить инструкции для сброса пароля
+        back: Назад ко входу в систему
   global:
     user:
       roles:
@@ -112,23 +131,7 @@ ru:
   ru: Русский
   password_reset_mailer:
     reset_email:
-      subject: 'Password reset | AskIt'
-  password_resets:
-    fail: Не удалось сбросить ваш пароль...
-    edit:
-      title: Выберите новый пароль
-      form:
-        submit: Сбросить пароль!
-    update:
-      success: Ваш пароль был сброшен!
-    create:
-      success: Инструкции были отправлены на ваш адрес.
-    new:
-      title: Сбросить пароль
-      form:
-        email: Email
-        submit: Отправить инструкции для сброса пароля
-        back: Назад ко входу в систему
+      subject: 'Сброс пароля | AskIt'
   sessions:
     create:
       invalid_creds: Неверный email и/или пароль!
