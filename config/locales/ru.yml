@@ -24,6 +24,11 @@ ru:
     models:
       question: Вопрос
   admin:
+    user_mailer:
+      bulk_import_done:
+        subject: Импорт пользователей завершён | AskIt
+      bulk_import_fail:
+        subject: Импорт пользователей не удался | AskIt
     users:
       edit:
         title: Редактирование пользователя

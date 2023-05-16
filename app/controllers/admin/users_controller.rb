@@ -23,7 +23,8 @@ module Admin
         # Ставим задачу с этой джобой в очередь (perform_later):
         # Ниже current_user - тот, кто инициирует джобу. В дальнейшем будем получать email
         UserBulkImportJob.perform_later(create_blob, current_user)
-        flash.now[:success] = t('.success')
+        flash[:success] = t('.success')
+        # flash.now[:success] = t('.success')  # Пришлось убрать здесь .now, иначе не вылетает попап
       end
 
       redirect_to admin_users_path
