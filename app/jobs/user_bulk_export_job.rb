@@ -5,12 +5,9 @@ class UserBulkExportJob < ApplicationJob
 
   def perform(initiator)
     # Эта строка (вызов сервиса) возвращает объект ActiveStorage (наш архив с юзерами)
-    zipped_blob = UserBulkExportService.call
+    stream = UserBulkExportService.call
 
     # Теперь, когда архив сгенерирован, хотим его отправить пользователю
-    Admin::UserMailer.with(user: initiator, zipped_blob: zipped_blob).bulk_export_done.deliver_now
-  ensure
-    # Удаляем архив
-    zipped_blob.purge
+    Admin::UserMailer.with(user: initiator, stream: stream).bulk_export_done.deliver_now
   end
 end

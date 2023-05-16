@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     # (поэтому вот такой дубль стр.14 появился ниже:)
     resources :answers, except: %i[new show], concerns: :commentable
 
-    namespace :admin do
+    namespace :admin, constraints: AdminConstraint.new do
       resources :users, only: %i[index create edit update destroy]
     end
 

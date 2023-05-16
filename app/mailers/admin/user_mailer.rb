@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class UserMailer < ApplicationMailer
     def bulk_import_done
@@ -16,10 +18,10 @@ module Admin
     def bulk_export_done
       # Считываем юзера и архив из парамс
       @user = params[:user]
-      zipped_blob = params[:zipped_blob]
+      stream = params[:stream]
 
       # Считываем содержание архива и прикрепляем к письму
-      attachments[zipped_blob.attachable_filename] = zipped_blob.download
+      attachments['result.zip'] = stream.read
       # отправляем письмо с архивом юзеру-инициатору экспорта
       mail to: @user.email, subject: I18n.t('admin.user_mailer.bulk_export_done.subject')
     end
