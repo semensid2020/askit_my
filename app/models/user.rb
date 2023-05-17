@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
 
-  validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
+  validates :email, presence: true, uniqueness: true, email: true
   validates :role, presence: true
 
   # Ставим false, т.к. все валидации будем прописывать сами.
