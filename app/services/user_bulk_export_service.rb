@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class UserBulkExportService < ApplicationService
-
   def call
     # Создаем объект OutputStream, это фактически архив, который мы будем пересылать юзеру на его запрос
     # при этом, архив этот у нас на диске нигде не хранится (т.е. он "временный")

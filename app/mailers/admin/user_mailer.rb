@@ -25,6 +25,5 @@ module Admin
       # отправляем письмо с архивом юзеру-инициатору экспорта
       mail to: @user.email, subject: I18n.t('admin.user_mailer.bulk_export_done.subject')
     end
-
   end
 end

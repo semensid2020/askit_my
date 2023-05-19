@@ -7,6 +7,8 @@ class PasswordResetsController < ApplicationController
   before_action :check_user_params, only: %i[edit update]
   before_action :set_user, only: %i[edit update]
 
+  def edit; end
+
   def create
     @user = User.find_by(email: params[:email])
     # Можно было бы использовать deliver_now, но он делает это in place, и браузер может "подвиснуть".
@@ -19,15 +21,13 @@ class PasswordResetsController < ApplicationController
       PasswordResetMailer.with(user: @user).reset_email.deliver_later
     end
 
-    flash[:success] =t('.success')
+    flash[:success] = t('.success')
     redirect_to new_session_path
   end
 
-  def edit;end
-
   def update
     if @user.update(user_params)
-      flash[:success] =t('.success')
+      flash[:success] = t('.success')
       redirect_to new_session_path
     else
       render :edit

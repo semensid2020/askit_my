@@ -18,9 +18,10 @@ module Admin
           flash[:success] = t('.success')
           redirect_to admin_users_path
         end
-
       end
     end
+
+    def edit; end
 
     def create
       # Открываем Zip-архив, вытаскиваем из него файлы и обрабатываем их (создаем юзеров)
@@ -34,8 +35,6 @@ module Admin
 
       redirect_to admin_users_path
     end
-
-    def edit; end
 
     def update
       if @user.update(user_params)
